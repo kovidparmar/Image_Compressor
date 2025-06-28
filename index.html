@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗜️ Image Compressor</h1>
+            <p>Compress your images while maintaining quality</p>
+        </div>
+
+        <div class="main-content">
+            <div class="upload-area" id="uploadArea">
+                <span class="upload-icon">📁</span>
+                <div class="upload-text">Drop your images here or click to browse</div>
+                <div class="upload-subtext">Supports JPEG, PNG, WebP, and more</div>
+                <input type="file" id="fileInput" accept="image/*" multiple>
+            </div>
+
+            <div class="controls" id="controls">
+                <div class="control-group">
+                    <label>Output Format:</label>
+                    <div class="format-selector">
+                        <div class="format-option">
+                            <input type="radio" id="jpeg" name="format" value="jpeg" checked>
+                            <label for="jpeg">JPEG</label>
+                        </div>
+                        <div class="format-option">
+                            <input type="radio" id="png" name="format" value="png">
+                            <label for="png">PNG</label>
+                        </div>
+                        <div class="format-option">
+                            <input type="radio" id="webp" name="format" value="webp">
+                            <label for="webp">WebP</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group quality-control">
+                    <label>Compression Quality:</label>
+                    <input type="range" id="qualitySlider" class="quality-slider" min="10" max="100" value="80">
+                    <div class="quality-value" id="qualityValue">80%</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Resize Image:</label>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <div>
+                            <label style="font-size: 0.9rem;">Width (px)</label>
+                            <input type="number" id="resizeWidth" placeholder="e.g. 800"
+                                style="padding: 8px; width: 100px;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.9rem;">Height (px)</label>
+                            <input type="number" id="resizeHeight" placeholder="e.g. 600"
+                                style="padding: 8px; width: 100px;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.9rem;">OR Scale (%)</label>
+                            <input type="number" id="resizeScale" placeholder="e.g. 50"
+                                style="padding: 8px; width: 100px;">
+                        </div>
+                    </div>
+                    <small style="color: #888;">Leave blank to keep original size</small>
+                </div>
+
+                <button class="compress-btn" id="compressBtn">Compress Images</button>
+                <button class="reset-btn" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Compressing your images...</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div id="progressText" style="margin-top: 10px; font-weight: 500;">0%</div>
+
+            <div class="comparison" id="comparison">
+                <div class="comparison-header">
+                    <h2 class="comparison-title">Compression Results</h2>
+                    <div class="stats" id="stats"></div>
+                </div>
+                <div id="imagesContainer"></div>
+                <button class="download-btn" id="downloadAllBtn">Download All Compressed Images</button>
+            </div>
+        </div>
+        <footer style="text-align: center; margin-top: 60px; padding: 20px; font-size: 0.95rem; color: #555;">
+            🔒 All processing is done securely in your browser. No files are uploaded or stored.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
